@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.0.2.RELEASE'
+		springBootVersion = '1.5.13.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -25,16 +25,29 @@ repositories {
 	maven { url "https://repo.spring.io/milestone" }
 }
 
-
 ext {
-	springCloudVersion = 'Finchley.BUILD-SNAPSHOT'
+    springCloudVersion = 'Edgware.SR3'
 }
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.boot:spring-boot-configuration-processor')
 	compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-autoconfigure')
+
+    compile('org.springframework.social:spring-social-core')
+    compile('org.springframework.social:spring-social-config')
+    compile('org.springframework.social:spring-social-facebook')
+    compile('org.springframework.social:spring-social-google:1.0.0.RELEASE')
+    compile('org.springframework.social:spring-social-linkedin:1.0.2.RELEASE')
+
 	compile('org.springframework.cloud:spring-cloud-starter-oauth2')
+	compile('org.springframework.security:spring-security-web')
+	compile('org.springframework.security:spring-security-config')
+
+    compile('org.apache.commons:commons-lang3:3.7')
+
 	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('com.h2database:h2')
 	compileOnly('org.projectlombok:lombok')
