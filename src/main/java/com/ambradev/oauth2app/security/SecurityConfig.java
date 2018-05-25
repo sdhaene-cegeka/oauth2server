@@ -24,12 +24,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-            .formLogin().disable() // disable form authentication
-            .anonymous().disable() // disable anonymous user
-            .httpBasic().and()
-            // restricting access to authenticated users
-            .authorizeRequests().anyRequest().authenticated();
+        http.authorizeRequests().antMatchers("/css/**", "/connect/**").permitAll()
+            .antMatchers("/secure/**")
+            .authenticated()
+            .and()
+            .formLogin()
+            .loginPage("/login")
+            .defaultSuccessUrl("/secure/user")
+            .failureUrl("/login-error")
+            .permitAll()
+            .and()
+            .logout()
+            .permitAll();
     }
 
     @Override
@@ -57,11 +63,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-//    //TODO: SDH Replace with proper password encoder.
-//    @SuppressWarnings("deprecation")
-//    @Bean
-//    public static NoOpPasswordEncoder passwordEncoder() {
-//        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
-//    }
 }

@@ -14,8 +14,7 @@ import java.util.Set;
 @Service
 public class Autologin {
 
-
-    public void setSecuritycontext(UserBean userForm) {
+    public void setSecurityContext(UserBean userForm) {
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         grantedAuthorities.add(new SimpleGrantedAuthority(userForm.getProvider().toUpperCase()));
         Authentication authentication = new UsernamePasswordAuthenticationToken(userForm.getEmail(), userForm.getPassword(), grantedAuthorities);

@@ -54,7 +54,7 @@ public class BaseProvider {
     }
 
     public void autoLoginUser(UserBean userBean) {
-        autologin.setSecuritycontext(userBean);
+        autologin.setSecurityContext(userBean);
     }
 
     public Facebook getFacebook() {

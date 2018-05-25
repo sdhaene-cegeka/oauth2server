@@ -8,10 +8,11 @@ import java.security.Principal;
 
 @RestController
 public class GeneralController {
-    @GetMapping("/")
-    public RestMsg hello(){
-        return new RestMsg("Hello World!");
-    }
+
+//    @GetMapping("/")
+//    public RestMsg hello(){
+//        return new RestMsg("Hello World!");
+//    }
 
     @GetMapping("/api/test")
     public RestMsg apitest(){
